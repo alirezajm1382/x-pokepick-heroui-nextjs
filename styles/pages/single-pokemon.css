@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .pokemon-header-grid {
+    @apply grid gap-2 mt-2 h-4/5;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+  }
+
+  .pokemon-stats-left {
+    @apply grid grid-rows-4 grid-cols-1;
+    padding: 1rem;
+    grid-row: 2 / 3;
+  }
+
+  .pokemon-stats-right {
+    @apply flex flex-col justify-between;
+    padding: 1rem;
+    grid-row: 3 / 4;
+  }
+
+  .pokemon-sprite {
+    @apply flex justify-center items-center;
+    grid-row: 1 / 2;
+  }
+
+  @screen md {
+    .pokemon-header-grid {
+      grid-template-rows: auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .pokemon-stats-left {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+    .pokemon-stats-right {
+      grid-row: 1 / 2;
+      grid-column: 4 / 5;
+    }
+    .pokemon-sprite {
+      @apply flex flex-row justify-center items-center;
+      grid-row: 1 / 2;
+      grid-column: 2 / 4;
+    }
+  }
+}
+
+.pokemon-stat {
+  @apply h-1/4;
+}
+
+.pokemon-stat > h2 {
+  @apply text-2xl font-bold text-left bg-black/10 dark:bg-white/5 rounded-md p-2;
+}
+
+.pokemon-stat-value {
+  @apply flex justify-center items-center p-2;
+}
+
+.pokemon-stat-value > p {
+  @apply text-lg p-2 h-1/2;
+}
+
+.cry-button {
+  @apply p-4;
+}
