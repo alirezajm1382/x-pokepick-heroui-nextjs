@@ -1,7 +1,12 @@
 "use client";
-import { Button, Card, CardFooter, CardHeader, Image } from "@heroui/react";
+
+//hooks
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+
+//components
+import { subtitle } from "../primitives";
+import { Button, Card, CardFooter, CardHeader, Image } from "@heroui/react";
 
 const PokemonGrid: React.FunctionComponent = () => {
   const router = useRouter();
@@ -50,12 +55,14 @@ const PokemonGrid: React.FunctionComponent = () => {
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {pokemons.map((pokemon, i) => (
           <Card
-            onPress={() => {router.push(`/pokemon/${i + 1}`)}}
+            onPress={() => {
+              router.push(`/pokemon/${i + 1}`);
+            }}
             isPressable
             isFooterBlurred
             isHoverable
             key={i}
-            className="h-[200px] relative flex flex-col justify-center items-center"
+            className="h-[300px] relative flex flex-col justify-center items-center"
           >
             <CardHeader className="items-center justify-center h-[200px] w-full">
               <Image
@@ -63,11 +70,14 @@ const PokemonGrid: React.FunctionComponent = () => {
                 className="object-fill"
                 width={"100%"}
                 height={"200px"}
+                loading="lazy"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`}
               />
             </CardHeader>
             <CardFooter className="justify-center before:bg-white/10 overflow-hidden py-2 absolute bottom-0 shadow-small ml-1 z-10">
-              {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+              <p className={`${subtitle()}`}>
+                {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+              </p>
             </CardFooter>
           </Card>
         ))}
